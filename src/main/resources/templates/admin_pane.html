@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrator panel</title>
+    <link rel="stylesheet" th:href="@{/css/menu.css}">	
+	<link rel="stylesheet" th:href="@{/css/table.css}">
+	<link rel="stylesheet" th:href="@{/css/buttons.css}">    
+</head>
+<body>
+	<nav class="main-menu">
+	    <ul>
+	        <li>
+	            <a href="/tournaments">
+	                <i class="fa fa-home fa-2x"></i>
+	                <span class="nav-text">
+	                    Tournaments
+	                </span>
+	            </a>
+	          
+	        </li>
+	        <li>
+	            <a href="/tournaments/create">
+	                <i class="fa fa-plus fa-2x"></i>
+	                <span class="nav-text">
+	                    Create tournament
+	                </span>
+	            </a>	           
+	        </li>
+	        <li>
+	            <a href="/tournaments/upcoming">
+	                <i class="fa fa-trophy fa-2x"></i>
+	                <span class="nav-text">
+	                    Upcoming tournaments
+	                </span>
+	            </a>	            
+	        </li>
+			<li>
+				<a href="/admin/pane">
+					<i class="fa fa-user fa-2x"></i>
+					<span class="nav-text">
+	                    Admin panel
+	                </span>
+				</a>
+			</li>
+	    </ul>
+	
+	    <ul class="logout">
+	        <li>
+	           <a href="/logout">
+	                 <i class="fa fa-power-off fa-2x"></i>
+	                <span class="nav-text">
+	                    Logout
+	                </span>
+	            </a>
+	        </li>  
+	    </ul>
+    </nav>
+	<div class="container">
+    	<h3 class="upcoming">All users</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>E-mail</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}" >
+                <td th:text="${user.email}" th:onclick="|window.location.href='/admin/pane/${user.id}'|"></td>
+            </tr>
+            </tbody>
+        </table>     
+	</div>
+</body>
+</html>
